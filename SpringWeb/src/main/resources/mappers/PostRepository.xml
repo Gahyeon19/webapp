@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springweb.repository.PostRepository">
+<!--    id는 PostRepository의 메소드들-->
+<!--    <select id="findAll"-->
+<!--            resultType="com.example.springweb.model.Post">-->
+<!--        SELECT postId, title, content, likes FROM post-->
+<!--    </select>-->
+<!--    정적 쿼리   -->
+<!--    <select id="findAllWithLikes"-->
+<!--            resultType="com.example.springweb.model.Post"-->
+<!--            parameterType="int">-->
+<!--        SELECT postId, title, content, likes FROM post-->
+<!--        WHERE likes &gt; #{likes}-->
+<!--    </select>-->
+
+<!--    동적 쿼리   -->
+    <select id="findAllWithLikes"
+            resultType="com.example.springweb.model.Post"
+            parameterType="map">
+        SELECT * FROM post
+        <where>
+            <if test="title != null and title != ''" >
+                AND title like concat('%', #{title}, '%')
+            </if>
+            <if test="likes != null">
+                AND likes &gt;= #{likes}
+            </if>
+        </where>
+    </select>
+
+    <select id="findById"
+            resultType="com.example.springweb.model.Post"
+            parameterType="int" >
+        SELECT postId, title, content, likes FROM post
+        WHERE postId = #{postId}
+    </select>
+    <insert id="insertPost"
+            parameterType="com.example.springweb.model.Post"
+            useGeneratedKeys="true"
+            keyProperty="postId">
+        INSERT INTO post (title, content)
+        VALUES (#{title}, #{content})
+    </insert>
+    <delete id="deletePost"
+            parameterType="int">
+        DELETE FROM post
+        WHERE postId = #{postId}
+    </delete>
+    <update id="updatePost"
+            parameterType="com.example.springweb.model.Post">
+        UPDATE post
+        SET content = #{content}, likes = #{likes}
+        WHERE postId = #{postId}
+    </update>
+</mapper>

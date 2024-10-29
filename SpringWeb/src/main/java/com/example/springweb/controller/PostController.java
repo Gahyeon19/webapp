@@ -23,6 +23,12 @@ public class PostController {
         return postService.getAllPosts();
     }
 
+    @GetMapping("/posts/likes")   // 좋아요 수 likes 값 이상인 게시판 글 전체 목록 조회 (정적쿼리)
+    public List<PostAllResponseDto> viewAllPostsWithLikes(@RequestParam(name="likes", required = false) Integer likes,
+                                                          @RequestParam(name="title", required = false) String title) {
+        return postService.getAllPostsWithLikes(likes, title);
+    }
+
     @GetMapping("/posts/{postId}")      // 게시판 글 상세 조회
     public PostDetailResponseDto viewPostDetail(@PathVariable("postId") int postId) {
         return postService.getPostById(postId);
