@@ -2,20 +2,21 @@ package com.example.springweb.controller;
 
 import com.example.springweb.model.*;
 import com.example.springweb.service.PostService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 public class PostController {
-
     private final PostService postService;
 
-    @Autowired
-    public PostController(PostService postService) {
-        this.postService = postService;
-    }
+//    @Autowired        //@RequiredArgsConstructor 로 대체 가능
+//    public PostController(PostService postService) {
+//        this.postService = postService;
+//    }
 
     @GetMapping("/posts")   // 게시판 글 전체 목록 조회
     public List<PostAllResponseDto> viewAllPosts() {

@@ -2,6 +2,7 @@ package com.example.springweb.service;
 
 import com.example.springweb.model.*;
 import com.example.springweb.repository.PostRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,13 +10,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class PostService {
     private final PostRepository postRepository;
 
-    @Autowired
-    public PostService(PostRepository postRepository) {
-        this.postRepository = postRepository;
-    }
+//    @Autowired      // @RequiredArgsConstructor 로 대체 가능
+//    public PostService(PostRepository postRepository) {
+//        this.postRepository = postRepository;
+//    }
 
     public List<PostAllResponseDto> getAllPosts() {
         List<Post> allPosts = postRepository.findAll();
