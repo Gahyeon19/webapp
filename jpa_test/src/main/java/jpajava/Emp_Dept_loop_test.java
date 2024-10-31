@@ -18,7 +18,9 @@ public class Emp_Dept_loop_test {
         System.out.println("START TRANSACTION");
         try {
             Employee employee = em.find(Employee.class, "202403");
-            System.out.println(employee);
+            System.out.println("EMP NAME : " + employee.getEmpName());   // Department 와 Employee 모두에 toString 구현하면 무한 루프에 빠짐.
+            System.out.println("DEPT NAME : " + employee.getDepartment().getDeptName());
+
 
             System.out.println("BEFORE COMMIT");
             tx.commit();

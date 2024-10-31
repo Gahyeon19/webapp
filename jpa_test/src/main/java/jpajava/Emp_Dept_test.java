@@ -29,7 +29,7 @@ public class Emp_Dept_test {
             emp.setJoinDate("2021-01-01");
             emp.setSalary(100);
             em.persist(emp);                        // 영속
-            dept.getEmps().add(emp);
+//            dept.getEmps().add(emp);
 
             emp = new Employee();          // 비영속. 지연 쓰기
             emp.setEmpId("202404");
@@ -38,10 +38,10 @@ public class Emp_Dept_test {
             emp.setJoinDate("2022-01-01");
             emp.setSalary(1000);
             em.persist(emp);                        // 영속
-            dept.getEmps().add(emp);        // 순수 객체 상태를 고려해서 사용하려면 ~~
+//            dept.getEmps().add(emp);        // 순수 객체 상태를 고려해서 사용하려면 ~~
 
-            Department findDept = em.find(Department.class, dept.getDeptId());
-            System.out.println("IT 부서의 직원 수 : " + findDept.getEmps().size());
+//            Department findDept = em.find(Department.class, dept.getDeptId());
+//            System.out.println("IT 부서의 직원 수 : " + findDept.getEmps().size());
 
             System.out.println("BEFORE COMMIT");
             tx.commit();

@@ -12,12 +12,13 @@ public class Department {
     private int deptId;
     @Column(length = 10, nullable = false)
     private String deptName;
-    @OneToMany(mappedBy = "department")     //Employee 에서 설정한 필드 이름. mappedBy가 있으면 연관관계 주인이 아님.
-    List<Employee> emps = new ArrayList<Employee>();
 
-    public List<Employee> getEmps() {
-        return emps;
-    }
+    //양방향
+//    @OneToMany(mappedBy = "department")     //Employee 에서 설정한 필드 이름. mappedBy가 있으면 연관관계 주인이 아님.
+//    List<Employee> emps = new ArrayList<Employee>();
+//    public List<Employee> getEmps() {
+//        return emps;
+//    }
 
     public int getDeptId() {
         return deptId;
