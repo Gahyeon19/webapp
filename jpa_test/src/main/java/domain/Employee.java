@@ -11,8 +11,8 @@ public class Employee {
     @Column(length = 10, nullable = false)
     private String empName;
 //    @OneToOne     // fetch type : EAGER
-//    @OneToMany      // fetch type : LAZY    (LAZY : 지연 로딩)
-    @ManyToOne(fetch = FetchType.EAGER)    // fetch type : EAGER     (EAGER : 즉시 로딩)
+//    @OneToMany      // (fetch = FetchType.LAZY)    : 지연 로딩
+    @ManyToOne(fetch = FetchType.LAZY)    // fetch type : EAGER     (EAGER : 즉시 로딩)
     @JoinColumn(name = "dept_id")   // FK 알려주기. Foreign Key를 갖고 있는 쪽이 연관관계 주인.
     private Department department;
     private String joinDate;
