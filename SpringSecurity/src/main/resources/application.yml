@@ -1,0 +1,31 @@
+#spring.application.name=SpringSecurity
+#spring.application.name=mini_sns
+
+#spring.application.name=spring_data_jpa
+#spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+#spring.datasource.url=jdbc:mysql://localhost:3306/jpatest?serverTimezone=Asia/Seoul
+#spring.datasource.username=root
+#spring.datasource.password=1111
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/jpatest?serverTimezone=Asia/Seoul
+    username: root
+    password: 1111
+
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+        hbm2ddl:
+          auto: update
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+#server:
+#  servlet:
+#    session:
+#      timeout: 2m
+#      tracking-modes: cookie
